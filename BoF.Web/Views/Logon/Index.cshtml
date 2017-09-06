@@ -1,0 +1,621 @@
+﻿@using BoF.BoFModels.Models;
+@model LoginModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Login";
+}
+@*<link href="~/Content/try.css" rel="stylesheet" />*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Funding a Banking Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Funding Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme -->
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/css/mainStyles.css" />
+    <link rel='stylesheet' href='~/css/dscountdown.css' type='text/css' media='all' />
+
+    <link rel="stylesheet" href="~/css/flexslider.css" type="text/css" media="screen" property="" />
+    <!-- gallery -->
+    <link href="~/css/lsb.css" rel="stylesheet" type="text/css">
+    <!-- //gallery -->
+    <!-- font-awesome-icons -->
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,900" rel="stylesheet">
+    <style>
+    </style>
+</head>
+<body>
+    <!-- banner -->
+    <div class="banner">
+        <nav class="navbar navbar-default" style="margin-bottom: 10px;margin-top:10px;">
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1><a class="navbar-brand" href="index.html"><span>Bank</span>Of Fiji</a></h1>
+            </div>
+            <!-- Collct the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <nav class="link-effect-2" id="link-effect-2">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html"><span data-hover="Home">Home</span></a></li>
+                        <li><a href="index.html#abt" class="scroll"><span data-hover="About Us">About Us</span></a></li>
+                        <li><a href="index.html#ser" class="scroll"><span data-hover="Our Services">Our Services</span></a></li>
+                        <li><a href="index.html#ln" class="scroll"><span data-hover="Loans">Loans</span></a></li>
+                        <li><a data-target="#myModal3" data-toggle="modal" class="scroll"><span data-hover="Login">Login</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </nav>
+    </div>
+
+    <!-- //banner -->
+    <div style="height:30%">
+        <div id="exampleSlider">
+            <div><h3>Banks are one thing you <span>can never bank upon.</span></h3></div>
+            <div><h3>Personal Finance service <span>& Home Banking</span></h3></div>
+            <div><h3>Banks are one thing you <span>can never bank upon.</span></h3></div>
+        </div>
+    </div>
+    <div class="header_mid">
+        <div class="w3layouts_header_mid">
+            <ul>
+                <li>
+                    <div class="header_contact_details_agile">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <div class="w3l_header_contact_details_agile">
+                            <div class="header-contact-detail-title">Send us a Message</div>
+                            <a href="mailto:info@example.com">customercare@bof.com</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="header_contact_details_agile">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <div class="w3l_header_contact_details_agile">
+                            <div class="header-contact-detail-title">Give us a Call</div>
+                            <a class="w3l_header_contact_details_agile-info_inner"> +679-8375296</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="header_contact_details_agile">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <div class="w3l_header_contact_details_agile">
+                            <div class="header-contact-detail-title">Opening Hours</div>
+                            <a class="w3l_header_contact_details_agile-info_inner">Mon - Sat: 7:00 - 18:00</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="header_contact_details_agile">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <div class="w3l_header_contact_details_agile">
+                            <div class="header-contact-detail-title">37 Ratu Dovi Road</div>
+                            <a class="w3l_header_contact_details_agile-info_inner">Matinitabua 70538 </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr style="margin-top:-5px;"></hr>
+    </br>
+    </br>
+    <div class="container">
+        <h3 class="w3l_header w3_agileits_header" id="abt">About <span>Us</span></h3>
+        <p class="sub_para_agile">BOF is one of the 5 largest listed companies in FIJI and number one bank in PACIFC with market capitalization of FJ$95b and total assets of FJ$89 billion as at 31 June 2017.</p>
+        <p class="sub_para_agile">We operate in 40 markets across Australia, New Zealand, Asia, Pacific, Europe, America and the Middle East.</p>
+        <p class="sub_para_agile">Our 46,000 staff serve retail, commercial and institutional customers through consumer and corporate offerings in our core markets, and regional trade and capital flows across the region.</p>
+        <p class="sub_para_agile">We have over 550,000 shareholders with 41.8% being retail shareholders and 72.5% domestic shareholders.</p>
+        </br></br></br>
+    </div>
+
+    <div class="middle-w3l" style="margin-top:25px;" id="ser">
+        <div class="col-md-3 w3ls-special-img text_info">
+            <h4>Our Services </h4>
+        </div>
+        <div class="col-md-3 w3ls-special-img w3l-grid-1">
+            <div class="w3ls-special-text effect-1">
+                <h4>Banking</h4>
+
+            </div>
+        </div>
+        <div class="col-md-3 w3ls-special-img w3l-grid-2">
+            <div class="w3ls-special-text effect-1">
+                <h4>Accounts</h4>
+            </div>
+        </div>
+        <div class="col-md-3 w3ls-special-img w3l-grid-3">
+            <div class="w3ls-special-text effect-1">
+                <h4>Loans</h4>
+
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+
+
+    <!-- banner-bottom -->
+    <div class="banner-bottom">
+        <div class="container" id="ln">
+            <div class="col-md-6 w3ls_banner_bottom_left">
+                <div class="w3ls_banner_bottom_right1">
+                    <h2>Loan We Offers</h2>
+                    <p>Get a  loan without any security or guarantor with minimum documentation. Loan Disbursement within 72 hours* of document submission.</p>
+                    <ul>
+                        <li> Interest rate remains unchanged throughout the loan tenure</li></br>
+                        <li> Simple documentation -&nbsp;It can be accessed with minimal paperwork and documentation and doesn&rsquo;t take much time.</li></br>
+                        <li> Quick processing</li></br>
+                        <li>  Direct credit of the loan amount through Fund Transfer (FT)</li></br>
+                        <li>  Simple repayment options of ECS, AD or PDC. You can also choose duration as per your choice and tenure starts from minimum 12 months to maximum 60 months</li></br>
+                    </ul>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-6 w3ls_banner_bottom_right">
+                <section class="slider">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <div class="agileits_w3layouts_banner_bottom_grid">
+                                    <img src="~/Images/1.jpg" alt=" " class="img-responsive" />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="agileits_w3layouts_banner_bottom_grid">
+                                    <img src="~/Images/2.jpg" alt=" " class="img-responsive" />
+                                </div>
+                            </li>
+                            <li>
+                                <div class="agileits_w3layouts_banner_bottom_grid">
+                                    <img src="~/Images/3.jpg" alt=" " class="img-responsive" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- //banner-bottom -->
+    <!-- middle -->
+    <!-- //middle -->
+    <div class="testimonials">
+        <div class="container-fluid">
+
+            <!-- /flip -->
+            <!-- //flip -->
+            <!-- bootstrap-pop-up -->
+            <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="signin-form profile">
+                            <h3 class="agileinfo_sign">Funding</h3>
+                            <div class="modal-body">
+                                <img src="~/Images/g1.jpg" alt=" " class="img-responsive" />
+                                <p>
+                                    Ut enim ad minima veniam, quis nostrum
+                                    exercitationem ullam corporis suscipit laboriosam,
+                                    nisi ut aliquid ex ea commodi consequatur? Quis autem
+                                    vel eum iure reprehenderit qui in ea voluptate velit
+                                    esse quam nihil molestiae consequatur, vel illum qui
+                                    dolorem eum fugiat quo voluptas nulla pariatur.
+                                    <i>
+                                        " Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+                                        esse quam nihil molestiae consequatur.
+                                    </i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //bootstrap-pop-up -->
+            <!-- gallery -->
+            <div class="gallery">
+                <h3 class="w3l_header w3_agileits_header">Latest <span>Gallery</span></h3>
+                <p class="sub_para_agile">we offer you the best moments</p>
+                <div class="agile_team_grids_top">
+                    <ul id="flexiselDemo1">
+                        <li>
+                            <div class="wthree_gallery_grid">
+                                <a href="~/Images/g1.jpg" class="lsb-preview" data-lsb-group="header">
+                                    <div class="view second-effect">
+                                        <img src="~/Images/g1.jpg" alt="" class="img-responsive" />
+                                        <div class="mask">
+                                            <p>View</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="wthree_gallery_grid">
+                                <a href="~/Images/g2.jpg" class="lsb-preview" data-lsb-group="header">
+                                    <div class="view second-effect">
+                                        <img src="~/Images/g2.jpg" alt="" class="img-responsive" />
+                                        <div class="mask">
+                                            <p>View</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="wthree_gallery_grid">
+                                <a href="~/Images/g4.jpg" class="lsb-preview" data-lsb-group="header">
+                                    <div class="view second-effect">
+                                        <img src="~/Images/g4.jpg" alt="" class="img-responsive" />
+                                        <div class="mask">
+                                            <p>View</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="wthree_gallery_grid">
+                                <a href="~/Images/g5.jpg" class="lsb-preview" data-lsb-group="header">
+                                    <div class="view second-effect">
+                                        <img src="~/Images/g5.jpg" alt="" class="img-responsive" />
+                                        <div class="mask">
+                                            <p>View</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //gallery -->
+                <!-- testimonials -->
+                <div class="testimonials">
+                    <div class="container">
+                        <h3 class="w3l_header w3_agileits_header">Our <span>Clients</span></h3>
+
+                        <div class="w3ls_testimonials_grids">
+                            <section class="center slider">
+                                <div class="agileits_testimonial_grid">
+                                    <div class="w3l_testimonial_grid">
+                                        <p>Our transition to Bank of Fiji was seamless. They’ve taken the time to truly understand every aspect of our business</p>
+                                        <h4>Rosy Crisp</h4>
+                                        <h5>Client</h5>
+                                        <br style="margin-bottom:10px;">
+                                        <div class="w3l_testimonial_grid_pos">
+                                            <img src="~/Images/1.png" alt=" " class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agileits_testimonial_grid">
+                                    <div class="w3l_testimonial_grid">
+                                        <p>The Bank understands our business model and how we are part of the fabric of a successful community</p>
+                                        <h4>Laura Paul</h4>
+                                        <h5>Client</h5>
+                                        <br style="margin-bottom:45px;">
+                                        <div class="w3l_testimonial_grid_pos">
+                                            <img src="~/Images/2.png" alt=" " class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agileits_testimonial_grid">
+                                    <div class="w3l_testimonial_grid">
+                                        <p>For a small family business like us, we needed to have somebody who was responsive to our needs…. Bank of FIJI looked at how they could help us solve problems</p>
+                                        <h4>Michael Doe</h4>
+                                        <h5>Client</h5>
+                                        <div class="w3l_testimonial_grid_pos">
+                                            <img src="~/Images/3.png" alt=" " class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <!-- //testimonials -->
+
+            </div>
+            <!-- footer -->
+            <div class="footer_agile_w3ls">
+                <div class="container">
+                    <div class="agileits_w3layouts_footer_grids">
+                        <div class="col-md-3 footer-w3-agileits">
+                            <h3>Bank of Fiji</h3>
+                            <ul>
+                                <li>37 Ratu Dovi Road</li>
+                                <li>Matinitabua 70538</li>>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 footer-agileits">
+                            <h3>Specialized</h3>
+                            <ul>
+                                <li>Fiance Banking</li>
+                                <li>Online Banking</li>
+                                <li>International Investments</li>
+                                <li>Asset Management</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 footer-wthree">
+                            <h3>Partners</h3>
+                            <ul>
+                                <li>Datec Fiji</li>
+                                <li>ITS Services</li>
+                                <li>FSTE</li>
+                                <li>Oceanic Communications</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 footer-agileits-w3layouts">
+                            <h3>Our Links</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="events.html">Events</a></li>
+                                <li><a href="mail.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="wthree_copy_right">
+                <div class="container">
+                    <p>© 2017 Bank of Fiji. All rights reserved.</p>
+                </div>
+            </div>
+            <!-- //footer -->
+
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            <div class="signin-form profile">
+                                <h3 class="agileinfo_sign">Sign In</h3>
+                                <div class="login-form">
+                                    <form action="#" method="post">
+                                        <input type="email" name="email" placeholder="E-mail" required="">
+                                        <input type="password" name="password" placeholder="Password" required="">
+                                        <div class="tp">
+                                            <input type="submit" value="Sign In">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="login-social-grids">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                    </ul>
+                                </div>
+                                <p><a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //Modal1 -->
+            <!-- Modal2 -->
+            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+                @using (Html.BeginForm("Index", "BoFLogin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" style="width:75%; margin-left:15%">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            <div class="signin-form profile">
+                                <h3 class="agileinfo_sign">Login</h3>
+                                <div class="login-form">
+                                    <form action="#" method="post">
+                                        @*Username*@
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3" style="margin-top:1%">
+                                                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                                                </div>
+                                                <div class="col-md-6" style="margin-left:5%; width:65%">
+                                                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Username), id = "usr" })
+                                                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*Password*@
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3" style="margin-top:1%">
+                                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                                </div>
+                                                <div class="col-md-6" style="margin-left:5%; width:65%">
+                                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Password), @type = "password", id = "pwd" })
+                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<input type="text" name="name" placeholder="Username" required="">
+                                        <input type="password" name="password" placeholder="Password" required="">*@
+                                        <input type="submit" value="Login">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <!-- //Modal2 -->
+            <!-- //bootstrap-pop-up -->
+            <!-- js -->
+            <script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+            <!-- //js -->
+            <!-- Counter required files -->
+            <script type="text/javascript" src="~/js/dscountdown.min.js"></script>
+            <script src="~/js/demo-1.js"></script>
+            <script>
+			jQuery(document).ready(function($){
+				$('.demo2').dsCountDown({
+					endDate: new Date("December 24, 2020 23:59:00"),
+					theme: 'black'
+					});
+			});
+            </script>
+            <!-- //Counter required files -->
+
+
+
+            <script src="~/js/mainScript.js"></script>
+            <script src="~/js/rgbSlide.min.js"></script>
+            <!-- carousal -->
+            <script src="~/js/slick.js" type="text/javascript" charset="utf-8"></script>
+            <script type="text/javascript">
+		$(document).on('ready', function() {
+		  $(".center").slick({
+			dots: true,
+			infinite: true,
+			centerMode: true,
+			slidesToShow:2,
+			slidesToScroll:2,
+			responsive: [
+				{
+				  breakpoint: 768,
+				  settings: {
+					arrows: true,
+					centerMode: false,
+					slidesToShow: 2
+				  }
+				},
+				{
+				  breakpoint: 480,
+				  settings: {
+					arrows: true,
+					centerMode: false,
+					centerPadding: '40px',
+					slidesToShow: 1
+				  }
+				}
+			 ]
+		  });
+		});
+            </script>
+            <!-- //carousal -->
+            <!-- flexisel -->
+            <script type="text/javascript">
+		$(window).load(function() {
+			$("#flexiselDemo1").flexisel({
+				visibleItems: 4,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint:480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint:640,
+						visibleItems:2
+					},
+					tablet: {
+						changePoint:768,
+						visibleItems: 2
+					}
+				}
+			});
+
+		});
+            </script>
+            <script type="text/javascript" src="~/js/jquery.flexisel.js"></script>
+            <!-- //flexisel -->
+            <!-- gallery-pop-up -->
+            <script src="~/js/lsb.min.js"></script>
+            <script>
+	$(window).load(function() {
+		  $.fn.lightspeedBox();
+		});
+            </script>
+            <!-- //gallery-pop-up -->
+            <!-- flexSlider -->
+            <script defer src="~/js/jquery.flexslider.js"></script>
+            <script type="text/javascript">
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+            </script>
+            <!-- //flexSlider -->
+            <!-- start-smooth-scrolling -->
+            <script type="text/javascript" src="~/js/move-top.js"></script>
+            <script type="text/javascript" src="~/js/easing.js"></script>
+            <script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+            </script>
+            <!-- start-smooth-scrolling -->
+            <!-- for bootstrap working -->
+            <script src="~/js/bootstrap.js"></script>
+            <!-- //for bootstrap working -->
+            <!-- here stars scrolling icon -->
+            <script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+            </script>
+            <!-- //here ends scrolling icon -->
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,38 @@
+﻿@*@using LoanMng.Logic.Manager*@
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar user -->
+        <!-- end sidebar user -->
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+            <li class="nav-header">&nbsp;</li>
+            <li class="has-sub @ViewBag.dashboard">
+                <a href="/home">
+                    <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
+                </a>
+            </li>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    var role = Roles.GetRolesForUser()[0];
+                    //if (role == ConstVal.Administrator)
+                    {
+                        <li class="has-sub @ViewBag.menu @ViewBag.role @ViewBag.rights @ViewBag.User">
+                            <a href="#"><b class="caret pull-right"></b><i class="fa fa-bar-chart-o">&nbsp;</i><span>USER SETUP</span></a>
+                            <ul class="sub-menu">
+                                <li class="@ViewBag.User"><a href="/user/Index">Create User</a></li>
+                                <li class="@ViewBag.menu"><a href="/user/managemenu">Menu Master</a></li>
+                                <li class="@ViewBag.role"><a href="/user/manageroles">Manage Role</a></li>
+                                <li class="@ViewBag.rights"><a href="/user/assignrights">Assign Rights to Role</a></li>
+                            </ul>
+                        </li>
+                    }
+                }
+            }
+            @{Html.RenderAction("SideBar", "User");}
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>

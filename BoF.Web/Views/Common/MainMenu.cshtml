@@ -1,0 +1,50 @@
+﻿@using BoF.Web.Helpers
+@using BoF.Web.Controllers
+@{
+    string cc = (string)ViewContext.ParentActionViewContext.RouteData.Values["controller"];
+}
+
+<ul id="menu" class="nav navbar-nav navbar-right">
+    <li><a href="/Home">Home</a></li>
+    <li><a href="/Admin">Admin</a></li>
+    @*@foreach (var m in Model)
+    {
+        if (m.ForNavigation)
+        {
+            if (cc == m.ControllerName)
+            {
+
+                if (m.DisplayName == "Reports")
+                {
+                    <li class="active"><a href="@m.ControllerName" target="_blank">@m.DisplayName</a></li>
+
+                }
+                else
+                {
+
+                    <li class="active"><a href="/@m.ControllerName">@m.DisplayName</a></li>
+
+                }
+
+            }
+            else
+            {
+
+                if (m.DisplayName == "Reports")
+                {
+
+                    <li><a href="@m.ControllerName" target="_blank">@m.DisplayName</a></li>
+
+                }
+                else
+                {
+
+                    <li><a href="/@m.ControllerName">@m.DisplayName</a></li>
+
+                }
+
+
+            }
+        }
+    }*@
+</ul>

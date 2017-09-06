@@ -1,0 +1,196 @@
+﻿@using MvcContrib.UI.Grid
+@model BoF.Web.Models.Security.RegisterModel
+@using BoF.Web.Models.Security
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var roleModels = (IList<RoleModel>)ViewData["AllRoles"];
+}
+
+<style type="text/css">
+    h3 {
+        color: #009C90;
+    }
+
+    .contentarea tr td {
+        border: 0px;
+    }
+</style>
+
+<div style="padding:14px;">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="contentarea" style="margin-top:-12px;">
+        <tr>
+            <td>
+                <h3 class="text-primary">Create a New Account</h3>
+                Use the form below to create a new account
+                Passwords are required to be a minimum of @Membership.MinRequiredPasswordLength
+                characters in length<br />
+
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+
+        <table cellpadding="0" cellspacing="0" border="0" class="contentarea">
+            <tr>
+                <td>
+
+
+                    <h4 class="text-primary">Account Information</h4>
+                    Username <br />
+                    @Html.TextBoxFor(m => m.UserName, new { usrvalidation = false, @class = "form-control" })
+                    <div id="valmessage" class="field-validation-error" style="display: none;"> </div>
+                    <div class="field-validation-error">@Html.ValidationMessageFor(m => m.UserName)</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email address
+                    <br />
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })<div class="field-validation-error">@Html.ValidationMessageFor(m => m.Email) </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password
+                    <br />
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })<div class="field-validation-error">@Html.ValidationMessageFor(m => m.Password)</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Confirm Password
+                    <br />@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    <div class="field-validation-error">@Html.ValidationMessageFor(m => m.ConfirmPassword)</div>
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <table cellpadding="0" cellspacing="0" border="0" class="contentarea">
+
+            <tr>
+                <td>
+
+                    @{
+
+                        var grid = new WebGrid(roleModels, canPage: true, rowsPerPage: 20);
+                        grid.Pager(WebGridPagerModes.NextPrevious);
+                        @grid.GetHtml(tableStyle: "table table-bordered",
+                                   headerStyle: "webGridHeader",
+                                   alternatingRowStyle: "alt",
+                                   rowStyle: "webGridDataRow",
+                                   columns: grid.Columns(
+
+                                   grid.Column("RoleModelName", "Role", canSort: true),
+                                   grid.Column(format: c => Html.CheckBox("roleChkBx", new { @value = c.RoleModelName }), canSort: false)
+
+
+                  ));
+                    }
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+
+                    <input id="btnRegister" type="submit" class="btn btn-primary" value="Register" />
+                    &nbsp;
+                    <input id="btnCancel" type="submit" value="Cancel" class="btn btn-primary" onclick="window.location = '/Security/ManageUsers'; return false;" />
+                </td>
+            </tr>
+        </table>
+
+
+        @*
+            <div class="panel-heading">
+                      <h3>Roles</h3>
+                      @Html.Grid(roleModels).Columns(
+                      column =>
+                      {
+                          column.For(c => Html.CheckBox("roleChkBx", new { @value = c.RoleModelName })).Encode(false);
+                          column.For(c => c.RoleModelName).Attributes(@class => "webGridDataRow");
+                      })
+
+                      <br />
+
+              </div>
+        *@
+                        }
+
+</div>
+
+<style type="text/css">
+    .frmgrid-style {
+        width: 200px;
+    }
+
+    .webGrid tfoot tr td {
+        font-size: 15px;
+        font-weight: bold;
+        color: #FF6501;
+        margin-top: 4px;
+    }
+
+        .webGrid tfoot tr td a {
+            padding: 2px 8px 2px 8px;
+            background: #428BCA !important;
+            color: #ffffff !important;
+        }
+
+    .webGridHeader {
+        background-color: #428bca;
+    }
+
+        .webGridHeader th, .webGridHeader th a {
+            color: #fff;
+        }
+
+    {
+        color: #fff;
+    }
+</style>
+
+
+
+<script type="text/javascript">
+    $("#UserName").change(function () {
+        checkUserNameAvailability();
+    });
+
+    function checkUserNameAvailability() {
+        $("#UserName").attr("usrvalidation", "false");
+        var url = "/Admin/CheckUserName/" + $("#UserName").val();
+        $.post(url, function (data) {
+            if (data) {
+                if (data == "Yes") {
+                    $("#valmessage").css("display", "block");
+                    $("#valmessage").text("This Username is already available");
+                    $("#UserName").css("background-color", "#FFEEEE");
+                    $("#UserName").attr("usrvalidation", "true");
+                    return false;
+                }
+                else {
+                    $("#valmessage").css("display", "none");
+                    $("#UserName").css("background-color", "#FFFFFF");
+                    return true;
+                }
+            } else {
+                $("#valmessage").text("<strong>Try again later</strong>");
+            }
+        });
+    }
+
+    $("#btnRegister").click(function () {
+        if ($("#UserName").attr("usrvalidation") == "true")
+            return false;
+        else
+            return true;
+    });
+</script>

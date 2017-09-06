@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC7AB57E-3FD5-4126-88EA-38AAE5D9CC89}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BoF.Models</RootNamespace>
+    <AssemblyName>BoF.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Helper\Attributes.cs" />
+    <Compile Include="Helper\CascadeAll.cs" />
+    <Compile Include="Helper\HtmlExtensions.cs" />
+    <Compile Include="Helper\HtmlPrefixScopeExtensions.cs" />
+    <Compile Include="Helper\PrettyNameAttribute.cs" />
+    <Compile Include="Helper\SecurityHelper.cs" />
+    <Compile Include="Helper\SettingsHelper.cs" />
+    <Compile Include="Helper\UrlExtensions.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AccountTypeModel.cs" />
+    <Compile Include="Models\CustomerInfoAccPac.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\EpisodeModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Mappers\AccountMapper.cs" />
+    <Compile Include="Models\Mappers\AccountTypeMapper.cs" />
+    <Compile Include="Models\Mappers\CustomerMapper.cs" />
+    <Compile Include="Models\Mappers\ErrorController.cs" />
+    <Compile Include="Models\Mappers\SecurityMapper.cs" />
+    <Compile Include="Models\Mappers\SystemRolesMapper.cs" />
+    <Compile Include="Models\Mappers\TransactionMapper.cs" />
+    <Compile Include="Models\Mappers\TransactionTypeMapper.cs" />
+    <Compile Include="Models\Mappers\UserProfileMapper.cs" />
+    <Compile Include="Models\Mappers\UserRoleMapper.cs" />
+    <Compile Include="Models\PatientModel.cs" />
+    <Compile Include="Models\Security\AccountMembershipService.cs" />
+    <Compile Include="Models\Security\AccountModels.cs" />
+    <Compile Include="Models\Security\ActionModel.cs" />
+    <Compile Include="Models\Security\ControllerModel.cs" />
+    <Compile Include="Models\Security\IMembershipService.cs" />
+    <Compile Include="Models\Security\IRoleService.cs" />
+    <Compile Include="Models\Security\RoleModel.cs" />
+    <Compile Include="Models\Security\RoleService.cs" />
+    <Compile Include="Models\Security\UserModel.cs" />
+    <Compile Include="Models\SystemRolesModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
+    <Compile Include="Models\TransactionTypeModel.cs" />
+    <Compile Include="Models\TransferTableModel.cs" />
+    <Compile Include="Models\TreatmentModel.cs" />
+    <Compile Include="Models\UserLoginDetailsModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
+    <Compile Include="Models\UserRoleModel.cs" />
+    <Compile Include="Models\UserStuff.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoF.Domain\BoF.Domain.csproj">
+      <Project>{6d6206ef-9c2d-4166-93be-5fee24dbd3a4}</Project>
+      <Name>BoF.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

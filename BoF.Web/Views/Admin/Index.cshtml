@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Security";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style type="text/css">
+    div.link-box {
+        width: 188px;
+        height: 130px;
+        float: left;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+        div.link-box:hover, div.link-box a:hover {
+            background-color: #6DC0E2;
+            color: #FFFFFF !important;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+        }
+
+        div.link-box a {
+            display: block;
+            white-space: nowrap;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+</style>
+
+<br /><br />
+
+<div class="row">
+
+    <div class="col-lg-3" style="margin-top:-18px;">
+
+        <div class="link-box">
+            <a href="/Admin/Register">
+                <img src="~/Content/images/RegisterAdminIcon.png" border="0" alt="Create Users" /><br />  <br /><br />
+                Create Users
+            </a>
+
+        </div>
+    </div>
+
+    <div class="col-lg-3">
+
+        <div class="link-box">
+            <a href="/Admin/ManageUsers">
+                <img src="~/Content/images/mangeUserIcon.png" border="0" alt="Manage Users" /><br />  <br />
+
+                Manage Users
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3">
+        <div class="link-box">
+            <a href="/Admin/ChangePassword">
+                <img src="~/Content/images/ManageRolesIcon.png" border="0" alt="Change Password" /><br />
+                <br />
+                Change Password
+            </a>
+        </div>
+    </div>
+
+</div>

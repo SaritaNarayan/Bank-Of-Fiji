@@ -1,0 +1,112 @@
+﻿@using BoF.BoFModels.Models;
+@model CustomerDetailsModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Interest_Charges</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.getJSON('@Url.Content("~/BoFAdmin/GetSimpleInterest")', function (FacilityData) {
+                
+                $("#simple_interest").val(FacilityData.DivId);
+                    //document.getElementById("simple_interest").value = simpleInterest;
+                    
+            }).error(function () {
+                // This is executed when the call to mail.php failed.
+            })
+        });
+
+        $(document).ready(function () {
+            $.getJSON('@Url.Content("~/BoFAdmin/GetSavingsInterest")', function (FacilityData) {
+               
+                $("#savings_interest").val(FacilityData.DivId);
+                //document.getElementById("simple_interest").value = simpleInterest;
+
+            }).error(function () {
+                // This is executed when the call to mail.php failed.
+            })
+        });
+    </script>
+
+</head>
+<body>
+    @Html.Action("ShowMyPartialView");
+    <div> 
+        <section class="content-header">
+            <h3 style="margin-left:18%">
+                Interest Rates
+            </h3>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- Info boxes -->
+            <!-- Main row -->
+            <div class="row">
+                <!-- Left col -->
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <!-- Info Boxes Style 2 -->
+                        <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+                        <div class="info-box-content">
+                            <h5>Simple Account</h5><br />
+                            <div class="row">
+                                <div class="col-xs-6"><label style="margin-left:2%">Current Simple Interest:</label></div>
+                                <div class="col-xs-6" style="margin-left:-5%; margin-top:-2%">@Html.TextBox("frmUserName", "", new { @type = "text", @class = "form-control", @id = "simple_interest", style = "width:50%", @readonly = "readonly" })</div>
+                            </div>                           
+                            <div class="row" style="margin-left:2%">
+                                <input id="idForid" type="hidden" value="" />
+                                @using (Html.BeginForm("AddSimpleInterest", "BoFAdmin", FormMethod.Post, new { enctype = "multipart/form-data", @id = "VATForm" }))
+                                {
+                                    @Html.TextBoxFor(m => Model.AccountTypeModel.InterestRate, new { @type = "number", @style = "width:40%", @class = "form-control", @id = "txtVAT" })
+                                    <input type="submit" class="btn btn-success" value="Update" />
+                                }
+                            </div>
+
+                        </div>
+                        <!-- /.info-box-content -->                   
+                </div>
+                <div class="col-md-4">
+                    <!-- Info Boxes Style 2 -->
+                    <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+                    <div class="info-box-content">
+                        <h5>Savings Account</h5><br />
+                        <div class="row">
+                            <div class="col-xs-6"><label style="margin-left:2%">Current Savings Interest:</label></div>
+                            <div class="col-xs-6" style="margin-left:-5%; margin-top:-2%">@Html.TextBox("frmUserName", "", new { @type = "text", @class = "form-control", @id = "savings_interest", style = "width:50%", @readonly = "readonly" })</div>
+                        </div>
+                        <div class="row" style="margin-left:2%">
+                            <input id="idForid2" type="hidden" value="" />
+                            @using (Html.BeginForm("AddSavingsInterest", "BoFAdmin", FormMethod.Post, new { enctype = "multipart/form-data", @id = "VATForm" }))
+                            {
+                                @Html.TextBoxFor(m => Model.AccountTypeModel.InterestRate, new { @type = "number", @style = "width:40%", @class = "form-control", @id = "txtVAT" })
+                                <input type="submit" class="btn btn-success" value="Update" />
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+
+
+
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+    </div>
+</body>
+</html>

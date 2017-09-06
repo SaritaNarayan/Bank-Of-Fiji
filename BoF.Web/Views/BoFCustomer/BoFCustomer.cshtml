@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BoFCustomer</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var customerId =  @Session["CustomerId"]
+               // alert(customerId)
+                $.getJSON('@Url.Content("~/BoFCustomer/GetCustomerAccounts")', { id: customerId }, function (FacilityData) {
+                    //alert("Customer")
+                        $(function () {
+
+                            for (var i = 0; i < FacilityData.DivID.length; i = i + 4) {
+                                $('<tr class="customerrow">').append(
+                                        $('<td>').text(FacilityData.DivID[i]),
+                                        $('<td>').text(FacilityData.DivID[i + 1]),
+                                        $('<td>').text(FacilityData.DivID[i + 2]),
+                                        $('<td>').text(FacilityData.DivID[i + 3])
+                                    ).appendTo('#records_table3');
+                            }
+                        });
+                    });
+                
+            error(function () {
+                // This is executed when the call to mail.php failed.
+            })
+       
+        });
+    </script>
+</head>
+<body>
+    <div>
+        @Html.Action("ShowMyPartialView");
+        <section class="content-header">
+            <h3 style="margin-left:18%">
+                Customer Account Summary
+            </h3>
+        </section>
+        <div class="table-responsive" style="height:300px; margin-left:17%; overflow:auto;width:80%">
+            <table id="records_table3" border='1' class="table table-bordered table-condensed table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th width="25%">Customer Name</th>
+                        <th width="25%">Account Number</th>
+                        <th width="25%">Account Type</th>
+                        <th width="25%">Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="getrid"></tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>

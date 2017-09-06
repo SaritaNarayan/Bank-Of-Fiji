@@ -1,0 +1,30 @@
+﻿
+@*@if(Request.IsAuthenticated) {
+        <text>Welcome <strong>@User.Identity.Name</strong>!
+         <span style="font-size:11px;">[ @Html.ActionLink("Log Off", "Index", "Logoff") ]
+        [ @Html.ActionLink("Change Password", "ChangePassword", "Security")] </span>
+        </text>
+
+         <p class="text-right login-text">Welcome<span class="label label-success">User</span> | <span class="label label-warning">[ Login ]</span></p>
+
+    }
+    else {
+
+        @:[<a href="#">RFIS Home</a> ]
+        @:[ @Html.ActionLink("Log On", "Index", "Logon") ]
+    }*@
+
+
+
+@if (Request.IsAuthenticated)
+{
+
+    <p class="text-right login-text"> Welcome <span class="label label-success">@User.Identity.Name</span> | <span class="label label-warning">[ @Html.ActionLink("Log Off", "Index", "Logoff") ]</span> | <span class="label label-warning">[ @Html.ActionLink("Change Password", "ChangePassword", "Security")]</span></p>
+
+}
+else {
+
+    <p class="text-right login-text"> <span class="label label-warning">[ <a href="#">RFIS Home</a> ]</span> <span class="label label-warning">[@Html.ActionLink("Log On", "Index", "Logon") ]</span></p>
+    @*<p class="text-right login-text"> Welcome <span class="label label-success">SuperAdmin</span> | <span class="label label-warning">[ @Html.ActionLink("Log Off", "Index", "Logoff") ]</span> | <span class="label label-warning">[ @Html.ActionLink("Change Password", "ChangePassword", "Security")]</span></p>*@
+
+}

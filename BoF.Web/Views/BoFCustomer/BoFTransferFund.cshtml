@@ -1,0 +1,138 @@
+﻿@using BoF.BoFModels.Models;
+@model CustomerDetailsModel
+@*@{
+    Layout = null;
+}*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>BoFTransferFund</title>
+
+    <script>
+      $(document).ready(function () {
+            var customerId =  @Session["CustomerId"]
+               // alert(customerId)
+                $.getJSON('@Url.Content("~/BoFCustomer/GetCustomerAccount")', { id: customerId }, function (FacilityData) {
+                    //alert("Customer")
+                    $(function () {                       
+                            $("#simple_interest").val(FacilityData.DivID);                            
+                        });
+                    });
+
+            error(function () {
+                // This is executed when the call to mail.php failed.
+            })
+
+      });
+    </script>
+    <script> 
+    $(document).ready(function()
+    {
+    $.ajax({
+        url: "BoFCustomer/GetCustomerAccount",
+        
+    datatype: "JSON",
+    type: "Get",
+    success: function(data) {
+    debugger;
+    for (var i = 0; i < data.length; i++) {
+        var opt = new Option(data[i].DivID);
+    $("#op1").append(opt);
+    }
+    }
+    });
+    }); 
+    </script>  
+</head>
+<body>
+    <div> 
+        @Html.Action("ShowMyPartialView");
+        <section class="content-header">
+            <h3 style="margin-left:18%">
+                Transfer Funds
+            </h3>
+        </section>
+        <div class="row" style="margin-left:20%">
+            <!-- Left col -->
+            <div class="col-md-12">
+                <!-- MAP & BOX PANE -->
+                <div class="box box-primary" style="display:block">
+                    <div class="box-body no-padding">
+                        <div class="row">
+                            <div class="pad">
+                                <div class="row">
+                                    @using (Html.BeginForm("FundTransfer", "BoFCustomer", FormMethod.Post, new { enctype = "multipart/form-data", }))
+                                    {
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <h5>From Account:</h5>
+                                        </div>
+                                        <div class="col-xs-3" style="margin-left:-15%">
+                                           @* @Html.DropDownListFor(m => Model.AccountModel.AccountNumber, Model.AccountModel.GetAccounts, new { @id = "myid", })*@
+                                            @Html.TextBoxFor(K => K.AccountModel.AccountNumber, new { @type = "text", @class = " form-control", id = "simple_interest", style = "width:100%" })
+                                            @*<select class="form-control" id="op1">
+                                                <option selected="selected">Select</option>
+                                            </select>*@  
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-xs-3">
+                                                <h5>Bank</h5>
+                                            </div>
+                                            <div class="col-xs-3" style="margin-left:-15%">
+                                                @Html.DropDownListFor(K => K.AccountModel.Status, ViewData["Bank"] as SelectList, new { @class = "form-control", style = "width:100%; " })
+                                            </div>
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <h5>To Account:</h5>
+                                        </div>
+                                        <div class="col-xs-3" style="margin-left:-15%">
+                                            @*@Html.DropDownListFor(m => m.AccountModel.AccountNumber, Model.AccountModel.GetAccounts, new { @id = "myid", })*@
+                                            @Html.TextBoxFor(K => K.AccountModel.AccountNumber, new { @type = "text", @class = " form-control", id = "lastname", style = "width:100%" })
+                                        </div>
+                                    </div>                                    
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <h5>Amount:</h5>
+                                        </div>
+                                        <div class="col-xs-3" style="margin-left:-15%">
+                                            @Html.TextBoxFor(K => K.TransactionModel.TransAmount, new { @type = "text", @class = " form-control", id = "lastname", style = "width:100%" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <h5>Description:</h5>
+                                        </div>
+                                        <div class="col-xs-3" style="margin-left:-15%">
+                                            @Html.TextBoxFor(K => K.TransactionModel.TransDetails, new { @type = "text", @class = " form-control", id = "lastname", style = "width:100%" })
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left:-5%">
+                                        <input id="" type="submit" class="btn btn-primary display-mode" value="Transfer" style="margin-left:3%" />
+                                    </div>
+                                    }
+                                </div>
+                                    
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- /.col -->
+           
+        </div>        
+    </div>
+</body>
+</html>

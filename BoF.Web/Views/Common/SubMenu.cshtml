@@ -1,0 +1,6 @@
+﻿<ul id="submenu">
+    @foreach (var m in Model)
+    {
+        <li><a href="/@m.ControllerName/@m.ActionName/">@m.DisplayName</a></li>
+    }
+</ul>

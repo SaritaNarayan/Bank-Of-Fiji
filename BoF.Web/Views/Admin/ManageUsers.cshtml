@@ -1,0 +1,235 @@
+﻿@using MvcContrib.UI.Grid
+@using BoF.Web.Models.Security
+@{
+    ViewBag.Title = "Manage Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var roleModels = (IList<RoleModel>)ViewData["AllRoles"];
+    var customers = (IList<RegisterModel>)ViewData["Customers"];
+    var adminUsers = (IList<RegisterModel>)ViewData["AdminUsers"];
+}
+<link href="../../Content/msgBoxLight.css" rel="stylesheet" type="text/css" />
+
+<form action="/Security/ManageUsers" method="post" id="ManageUsers">
+    <br />
+
+    <h3 class="text-primary">Manage Users</h3>
+    <br />
+
+    <p>
+        Using this function you can assign roles to admin users.
+    </p>
+    <div class="clear">
+    </div>
+    <div id="validationmessage" class="errorbox" style="display: none; width: 676px;">
+    </div>
+    <div id="UserRoleExistsDIV" class="errorbox" style="width: 330px; font-size: 14px;
+                font-weight: normal;">
+        @Html.Raw(@ViewBag.UserRoleExistsMessage)
+    </div>
+
+    <div class="col-lg-12">
+        <div style="float: right;">
+            <input id="btnAdd" type="button" class="btn btn-primary" value="Add User" onclick="window.location = '/Security/Register'; return false;" />
+        </div>
+    </div>
+
+    <div class="col-lg-9 role-group" id="AdminUsers">
+        <h4 class="text-primary">Admin Users</h4>
+        <span style="float: right; margin-top: -22px;">* click on column header to sort data</span>
+        <div class="editor-field" style="margin-top: -5px;">
+
+            @{
+                var grid = new WebGrid(adminUsers, canPage: true, rowsPerPage: 20);
+                grid.Pager(WebGridPagerModes.NextPrevious);
+                @grid.GetHtml(tableStyle: "table table-bordered",
+                                  headerStyle: "webGridHeader",
+                                   alternatingRowStyle: "alt",
+                                   rowStyle: "webGridDataRow",
+                                   columns: grid.Columns(
+
+                                            grid.Column(header: "", format: @<text><input class="check-box" id="adminUserChkBx" name="adminUserChkBx" type="checkbox" value="@item.UserName:@item.RoleModelName " /></text>),
+                                            grid.Column("UserName", "User Name", canSort: true),
+                                            grid.Column("RoleModelName", "Role", canSort: true),
+                                            grid.Column(columnName: "Approved", header: "", format: (item) => (item.Approved) ? Html.ActionLink("Disable User", "EnableDisable", new { id = item.UserName }) : Html.ActionLink("Enable User", "EnableDisable", new { id = item.UserName }), canSort: false),
+                                            grid.Column(columnName: "LockedOut", header: "", format: (item) => (item.LockedOut) ? Html.ActionLink("UnLock User", "LockUnLock", new { id = item.UserName }) : Html.ActionLink("Lock User", "LockUnLock", new { id = item.UserName }), canSort: false),
+ //grid.Column(columnName: "UserName", header: "", format: item => Html.ActionLink("Delete User", "DeleteUser", new { id = item.UserName }, new { DeleteUser = item.UserName }), canSort: false),
+ //grid.Column(columnName: "UserName", header: "", format: item => Html.ActionLink("Delete Role", "DeleteUserRole", new { id = item.UserName, role = item.RoleModelName }, new { DeleteRole = item.RoleModelName }), canSort: false),
+
+
+ grid.Column(columnName: "UserName", header: "", format: item => Html.ActionLink("Delete Role", "DeleteUserRole", new { id = item.UserName, role = item.RoleModelName }, new { DeleteRole = item.RoleModelName }), canSort: false),
+
+                                            grid.Column(columnName: "UserName", header: "", format: item => Html.ActionLink("Change Username", "ChangeUsername", new { id = item.UserName }), canSort: false),
+
+                                            grid.Column(columnName: "UserName", header: "", format: item => Html.ActionLink("Change Password", "AdminChangePassword", new { id = item.UserName }), canSort: false)
+                   ));
+            }
+
+        </div>
+    </div>
+
+    <div class="col-lg-3 role-group" id="Roles">
+
+        <h4 class="text-primary">Roles</h4>
+
+        @{
+
+            grid = new WebGrid(roleModels, canPage: true, rowsPerPage: 20);
+            grid.Pager(WebGridPagerModes.NextPrevious);
+            @grid.GetHtml(tableStyle: "table table-bordered",
+                                   headerStyle: "webGridHeader",
+                                   alternatingRowStyle: "alt",
+                                   rowStyle: "webGridDataRow",
+                                   columns: grid.Columns(
+
+                                   grid.Column("RoleModelName", "Role", canSort: true),
+                                   grid.Column(format: c => Html.CheckBox("roleChkBx", new { @value = c.RoleModelName }), canSort: false)
+
+
+                  ));
+        }
+
+
+
+
+
+        @*
+            @Html.Grid(roleModels).Columns(
+             column =>
+             {
+                 column.For(c => Html.CheckBox("roleChkBx", new { @value = c.RoleModelName })).Encode(false);
+                 column.For(c => c.RoleModelName);
+             })
+        *@
+
+
+        <br />
+
+        <div style="float: right;">
+            <button id="btnSubmit" class="btn btn-primary">
+                Save/Submit
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<style type="text/css">
+    .frmgrid-style {
+        width: 200px;
+    }
+
+    .webGrid tfoot tr td {
+        font-size: 15px;
+        font-weight: bold;
+        color: #FF6501;
+        margin-top: 4px;
+    }
+
+        .webGrid tfoot tr td a {
+            padding: 2px 8px 2px 8px;
+            background: #428BCA !important;
+            color: #ffffff !important;
+        }
+
+    .webGridHeader {
+        background-color: #428bca;
+    }
+
+        .webGridHeader th, .webGridHeader th a {
+            color: #fff;
+        }
+
+    {
+        color: #fff;
+    }
+</style>
+<script src="../../Scripts/jquery.msgBox.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.noConflict();
+        //$.noConflict();
+        if ('@ViewBag.UserRoleExistsMessage' == "") {
+            $("#UserRoleExistsDIV").css("display", "none");
+        }
+
+        $("a[DeleteUser]").click(function () {
+            deleteconfirm($(this).attr("href"), "Do you want to Delete the User?");
+            return false;
+        });
+
+        $("a[DeleteRole]").click(function () {
+
+            var rolename = $(this).attr("DeleteRole");
+            if (rolename == '') {
+
+                $("#validationmessage").css("display", "block");
+                $("#validationmessage").text("Currently there is no role for the user. Please assign role before Delete.");
+                return false;
+            }
+            else {
+                /*if (confirm("Are you sure do you want to Delete this User’s Role?")) {
+                    $("#ManageUsers").attr("action", $(this).attr("href"));
+                    $('#ManageUsers').submit();
+                }*/
+                deleteconfirm($(this).attr("href"), "Do you want to Delete this User’s Role?");
+                return false;
+            }
+
+
+        });
+    });
+
+    function deleteconfirm(url, displaytext) {
+
+        $.msgBox({
+            title: "Are You Sure",
+            content: displaytext,
+            type: "confirm",
+            buttons: [{ value: "Yes" }, { value: "No"}],
+            success: function (result) {
+                if (result == "Yes") {
+                    $("#ManageUsers").attr("action", url);
+                    $('#ManageUsers').submit();
+                }
+            },
+            opacity: 0.9
+        });
+    }
+
+    $("#btnSubmit").click(function () {
+        var UsersCount = $('#AdminUsers table input[type="checkbox"]:checked').length;
+
+        var RolesCount = $('#Roles table input[type="checkbox"]:checked').length;
+
+
+        if (UsersCount == 0 && RolesCount == 0) {
+            $("#validationmessage").css("display", "block");
+            $("#validationmessage").text("Please select atleast one Admin User and one Role");
+            return false;
+        }
+        else if (UsersCount == 0 && RolesCount > 0) {
+            $("#validationmessage").css("display", "block");
+            $("#validationmessage").text("Please select atleast one Admin User");
+            return false;
+        }
+        else if (UsersCount > 0 && RolesCount == 0) {
+            $("#validationmessage").css("display", "block");
+            $("#validationmessage").text("Please select atleast one Role");
+            return false;
+        }
+        else {
+            return true;
+        }
+    });
+</script>
+<style>
+    .errorbox {
+        background-color: #ffebe8;
+        border: 1px solid #dd3c10;
+        color: #333;
+        padding: 4px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+</style>

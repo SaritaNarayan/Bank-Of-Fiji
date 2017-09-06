@@ -1,0 +1,205 @@
+﻿
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    @*<title>@ViewBag.Title</title>*@
+    <title>:: BoF ::</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />    @*<link rel="shortcut icon" href="@Url.Content("~/Images/logo-1.png")">*@
+
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="@Url.Content("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/bootstrap3-editable/css/bootstrap-editable.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/animate.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/style-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/theme/default.css")" rel="stylesheet" id="theme" />
+
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link href="@Url.Content("~/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/DataTables/buttons/css/buttons.dataTables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/DataTables/css/jquery.dataTables.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/parsley/src/parsley.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Scripts/select2/select2.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/sweet-alert.css")" rel="stylesheet" />
+    @* @RenderSection("styles", false)*@
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <!-- begin sidebar scrollbar -->
+        <div data-scrollbar="true" data-height="100%">
+            <!-- begin sidebar user -->
+            <!-- end sidebar user -->
+            <!-- begin sidebar nav -->
+            <ul class="nav">
+                <li class="nav-header">&nbsp;</li>
+                <li class="has-sub @ViewBag.dashboard">
+                    <a href="/BoFCustomer/BoFCustomer"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a>
+                </li>
+                @{
+                    //if (User.Identity.IsAuthenticated)
+                    {
+                        //var role = Roles.GetRolesForUser()[0];
+                        //if (role == ConstVal.Administrator)
+                        {
+                            <li class="has-sub @ViewBag.menu @ViewBag.role @ViewBag.rights @ViewBag.User">
+                                <a href="#"><b class="caret pull-right"></b><i class="fa fa-bar-chart-o">&nbsp;</i><span>Transfer</span></a>
+                                <ul class="sub-menu">
+                                    <li class="@ViewBag.User"><a href="/BoFCustomer/BoFTransferFund">Transfer Funds</a></li>
+                                    <li class="@ViewBag.menu"><a href="/BoFCustomer/TransactionHistory">Transfer History</a></li>
+                                </ul>
+                                <a href="/BoFCustomer/Statement"><i class="fa fa-bar-chart-o">&nbsp;</i><span>Statements</span></a>
+                                <a href="/BoFCustomer/BillPay"><i class="fa fa-bar-chart-o">&nbsp;</i><span>Bill Pay</span></a>
+                                <a href="/BoFCustomer/ApplyLoan"><i class="fa fa-bar-chart-o">&nbsp;</i><span>Apply for Loan</span></a>
+                            </li>
+                        }
+                    }
+                }
+                @*@{Html.RenderAction("SideBar", "User");}*@
+            </ul>
+            <!-- end sidebar nav -->
+        </div>
+        <!-- end sidebar scrollbar -->
+    </div>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- end #page-loader -->
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <!-- begin #header -->
+        <div id="header" style="padding:-1%" class="header navbar navbar-default navbar-fixed-top">
+            <!-- begin container-fluid -->
+            <div class="container-fluid">
+                <!-- begin mobile sidebar expand / collapse button -->
+                <div class="navbar-header">
+                    <a class="navbar-brand"><span><img style="height:85%; width:70%" src="~/Images/logo-1.png" /></span></a>
+                </div>
+                <!-- end mobile sidebar expand / collapse button -->
+                <!-- begin header navigation right -->
+                <ul style="margin-top:1%; margin-right:0.5%" class="nav navbar-nav navbar-right">
+                    @*@if (Request.IsAuthenticated)*@
+                    @*  {*@
+                    <text>
+                        @*@{Html.RenderAction("Notification", "Home");}*@
+                        <li class="dropdown navbar-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Images/123.png" alt="" />
+                                <span class="hidden-xs">Welcome @Session["Username"].ToString()</span> <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInLeft">
+                                <li class="arrow"></li>
+                                @{
+//var username = WebSecurity.CurrentUserName;
+//var role = Roles.GetRolesForUser(username)[0];
+                                }
+                                @*<li><a href="/account/manage">Change Password</a></li>*@
+                                @using (Html.BeginForm("Logout", "BoFLogin", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                }
+                                <li>
+                                    <a href="javascript:;document.getElementById('logoutForm').submit()">Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </text>
+                    @*  }*@
+                </ul>
+                <!-- end header navigation right -->
+            </div>
+            <!-- end container-fluid -->
+        </div>
+        <!-- end #header -->
+        <!-- begin #sidebar -->
+        @*@Html.Partial("_Menu")*@
+        @*@Html.Partial("_Sidebar")*@
+        @*@Html.Action("SideBar");*@
+        <div class="sidebar-bg">
+        </div>
+        <!-- end #sidebar -->
+        <!-- begin #content -->
+        @*@RenderBody()*@
+        <!-- end #content -->
+        <!-- begin scroll to top btn -->
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/plugins/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/plugins/jquery-ui/ui/minified/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/plugins/slimscroll/jquery.slimscroll.min.js")"></script>
+    <script src="@Url.Content("~/plugins/jquery-cookie/jquery.cookie.js")"></script>
+    <!-- ================== END BASE JS ================== -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <!-----------------------Data Table Js----------------------------------------->
+    <script src="@Url.Content("~/plugins/DataTables/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/dataTables.buttons.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/buttons.colVis.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/buttons.flash.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/jszip.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/pdfmake.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/vfs_fonts.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/buttons.html5.min.js")"></script>
+    <script src="@Url.Content("~/plugins/DataTables/buttons/js/buttons.print.min.js")"></script>
+    <!---------------------------------------------------------------------------------->
+
+    <script src="@Url.Content("~/plugins/sparkline/jquery.sparkline.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/apps.js")"></script>
+    <script src="@Url.Content("~/Scripts/select2/select2.js")"></script>
+    <script src="@Url.Content("~/Scripts/sweetalert.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/multifieldwrapper.js")"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.8.3.js")"></script>
+    @*<script src="~/Scripts/utility.js"></script>*@
+    <!-- ================== END PAGE LEVEL JS ================== -->
+    @*@RenderSection("scripts", required: false)*@
+    <script>
+		$(document).ready(function () {
+			App.init();
+			InitCloning();
+
+			if (!Modernizr.inputtypes.date) {
+				$('input[type=date]').datepicker({
+					dateFormat: 'yy-mm-dd'
+				}
+                    //$.datepicker.regional['in']
+                );
+			}
+			$(".select2").select2();
+			$("#overlay").hide();
+			dttable();
+		});
+		//DataTable
+		function dttable() {
+			debugger;
+			$('.Srchtable').DataTable({
+				dom: 'Bfrtip',
+				stateSave: true,
+				lengthMenu: [
+				  [25, 35, 50, -1],
+				  ['25 rows', '35 rows', '50 rows', 'Show all']
+				],
+				buttons: [
+					'colvis', 'pageLength', 'copy', 'excel', 'print'
+				]
+			});
+		}
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+﻿@using BoF.BoFModels.Models;
+@model CustomerDetailsModel
+@*@{
+    //Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BoFAdmin</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+      } );
+    </script>
+
+</head>
+<body> 
+     <div style="margin-left:10%">
+         @Html.Action("ShowMyPartialView");
+         @*@Html.Action("SideBar");*@
+        @using (Html.BeginForm("CreateUser", "BoFAdmin", FormMethod.Post, new { enctype = "multipart/form-data", }))
+        {
+            <section class="content-header">
+                <h3 style="margin-left:9%">
+                    User Details
+                </h3>
+            </section>
+                     <section class="content">
+                                <div class="row" style="margin-left:-15%">
+                                    <!-- Left col -->
+                                    <div class="col-md-12">
+                                        <!-- MAP & BOX PANE -->
+                                        <div class="box box-primary" style="display:block">
+                                            <div class="box-body no-padding">
+                                                <div class="row">
+                                                    <div class="pad">
+                                                        <div class="row">
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">First Name:</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.FirstName, new { @type = "text", @class = " form-control", id = "firstName", style = "width:100%" })
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Last Name:</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.LastName, new { @type = "text", @class = " form-control", id = "lastname", style = "width:100%" })
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Date of Birth:</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.DateOfBirth, new { @type = "text", @class = " form-control", id = "datepicker", style = "width:100%"})
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Email</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.Email, new { @type = "text", @class = " form-control", id = "telephone", style = "width:100%" })
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Gender</label>
+                                                                @*@Html.TextBoxFor(K => K.Gender, new { @type = "text", @class = " form-control", id = "AddressForDelivery", style = "width:100%"})*@
+                                                                @Html.DropDownListFor(K => K.CustomerModel.Gender, ViewData["Gender"] as SelectList, new { @class = "form-control", style = "width:100%; " })
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Mobile Contact</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.MobileNumber, new { @type = "text", @class = " form-control", id = "AddressForDelivery", style = "width:100%" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <label class="control-label">Home Address</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.HomeAddress, new { @type = "text", @class = " form-control", id = "telephone", style = "width:100%" })
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">City</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.City, new { @type = "text", @class = " form-control", id = "AddressForDelivery", style = "width:100%"})
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Tin Number</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.TinNumber, new { @type = "text", @class = " form-control", id = "telephone", style = "width:100%" })
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Occupation</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.Occupation, new { @type = "text", @class = " form-control", id = "AddressForDelivery", style = "width:100%"})
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <label class="control-label">Employer</label>
+                                                                @Html.TextBoxFor(K => K.CustomerModel.EmployerName, new { @type = "text", @class = " form-control", id = "AddressForDelivery", style = "width:100%" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <!-- /.row -->
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+
+                                </div>
+                                <div class="row">
+                                    <section class="content-header">
+                                        <h3 style="margin-left:-13%">
+                                            Account Details
+                                        </h3>
+                                    </section>
+                                    <section class="content">
+                                        <div class="row" style="margin-left:-54%">
+                                            <!-- Left col -->
+                                            <div class="col-md-12">
+                                                <!-- MAP & BOX PANE -->
+                                                <div class="box box-primary" style="display:block">
+                                                    <div class="box-body no-padding">
+                                                        <div class="row">
+                                                            <div class="pad">
+                                                                <div class="row">
+                                                                    <div class="col-xs-3">
+                                                                        <label class="control-label">Account Type:</label>
+                                                                        @Html.DropDownListFor(K => K.AccountTypeModel.AccountName, ViewData["AccountType"] as SelectList, new { @class = "form-control", style = "width:100%; " })
+                                                                    </div>
+                                                                    <div class="col-xs-3">
+                                                                        <label class="control-label">Starting Balance:</label>
+                                                                        @Html.TextBoxFor(K => K.AccountModel.Balance, new { @type = "text", @class = " form-control", id = "firstName", style = "width:100%", placeholder = "0.00" })
+                                                                    </div>                                                                   
+                                                                    <div class="col-xs-3">
+                                                                        <label class="control-label">Account Number:</label>
+                                                                        @Html.TextBoxFor(K => K.AccountModel.AccountNumber, new { @type = "text", @class = " form-control", id = "", style = "width:100%" })
+                                                                    </div>
+                                                                </div>
+                                                                <section class="content-header">
+                                                                    <h3 style="margin-left:0.5%">
+                                                                        Credential Details
+                                                                    </h3>
+                                                                </section>
+                                                                <div class="row">
+                                                                    <div class="col-xs-3">
+                                                                        <label class="control-label">Username</label>
+                                                                        @Html.TextBoxFor(K => K.CustomerModel.Username, new { @type = "text", @class = " form-control", id = "telephone", style = "width:100%" })
+                                                                    </div>
+                                                                    <div class="col-xs-3">
+                                                                        <label class="control-label">Password</label>
+                                                                        @Html.TextBoxFor(K => K.CustomerModel.Password, new { @type = "text", @class = " form-control", id = "AddressForDelivery", style = "width:100%"})
+                                                                    </div>                                                                   
+                                                                </div><br />                                                              
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- /.row -->
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+
+                                        </div>                                                                            
+                                        <!-- /.row -->
+                                    </section>
+                                </div>
+                                <div class="row" style="margin-left:-18%">
+                                    <input id="" type="submit" class="btn btn-primary display-mode" value="Create User" style="margin-left:3%" />
+                                </div>
+                                <!-- /.row -->
+                            </section>
+
+        }
+    </div>  
+</body>
+</html>

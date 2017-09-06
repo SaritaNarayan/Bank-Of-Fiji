@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<BoF.Web.Models.FileUploadModel>
+
+
+@{
+    ViewBag.Title = "DisplayFiles";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.FileExtension == ".pdf")
+        {
+            <tr>
+                <td>
+                    <img src="~/Images/pdf.png" width="30" height="30" /> @Html.ActionLink(item.FileName, "Download", new { fileName = item.FileName, filePath = item.FilePath }, null)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Delete", "Delete")*@
+                </td>
+            </tr>
+        }
+
+        else if ((item.FileExtension == ".doc") || (item.FileExtension == ".docx"))
+        {
+            <tr>
+                <td>
+                    <img src="~/Images/Word.png" width="30" height="30" />  @Html.ActionLink(item.FileName, "Download", new { fileName = item.FileName, filePath = item.FilePath }, null)
+                </td>
+
+                <td>
+                    @*   @Html.ActionLink("Delete", "Delete")*@
+                </td>
+            </tr>
+        }
+
+        else if ((item.FileExtension == ".xls") || (item.FileExtension == ".xlsx"))
+        {
+
+            <tr>
+                <td>
+                    <img src="~/Images/Excel.png" width="30" height="30" /> @Html.ActionLink(item.FileName, "Download", new { fileName = item.FileName, filePath = item.FilePath }, null)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Delete", "Delete")*@
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+

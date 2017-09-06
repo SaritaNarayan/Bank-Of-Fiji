@@ -1,0 +1,101 @@
+﻿@*@{ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_LayoutBoF.cshtml";
+    ViewBag.Dashboard = "active";}*@
+
+<div id="content" class="content">
+    <!-- begin breadcrumb -->
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">Dashboard</h1>
+    <!-- end page-header -->
+    <!-- begin row -->
+    @Html.Action("ShowMyPartialView");
+    <div class="row">
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="col-md-4 col-sm-6">
+                <div class="widget widget-stats bg-green">
+                    <div class="stats-icon"><i class="fa fa-male"></i></div>
+                    <div class="stats-info">
+                        <h4>Total User</h4>
+                        <p>@ViewBag.User</p>
+                    </div>
+                    <div class="stats-link">
+                        <a href="/user/stafflist">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                    </div>
+                </div>
+            </div>}
+        <div class="col-md-4 col-sm-6">
+            <div class="widget widget-stats bg-purple">
+                <div class="stats-icon"><i class="fa fa-users"></i></div>
+                <div class="stats-info">
+                    <h4>Total Customer</h4>
+                    <p>@ViewBag.customer</p>
+                </div>
+                <div class="stats-link">
+                    <a href="/customer/report">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="widget widget-stats bg-blue">
+                <div class="stats-icon"><i class="fa fa-envelope"></i></div>
+                <div class="stats-info">
+                    <h4>Applied Loan</h4>
+                    <p>@ViewBag.countApplied</p>
+                </div>
+                <div class="stats-link">
+                    <a href="/loan/appliedloanreport">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="widget widget-stats bg-aqua">
+                <div class="stats-icon"><i class="fa fa-thumbs-o-up"></i></div>
+                <div class="stats-info">
+                    <h4>Approved Loan</h4>
+                    <p>@ViewBag.countSanctioned</p>
+                </div>
+                <div class="stats-link">
+                    <a href="/loan/sanctionedloanreport">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="widget widget-stats bg-aqua">
+                <div class="stats-icon"><i class="fa fa-check"></i></div>
+                <div class="stats-info">
+                    <h4>Recover Loan</h4>
+                    <p>@ViewBag.closed</p>
+                </div>
+                <div class="stats-link">
+                    <a href="/loan/moneyrecovered">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="widget widget-stats bg-red">
+                <div class="stats-icon"><i class="glyphicon glyphicon-exclamation-sign"></i></div>
+                <div class="stats-info">
+                    <h4>Closed Loan</h4>
+                    <p>@ViewBag.closedloan</p>
+                </div>
+                <div class="stats-link">
+                    <a href="/loan/closedloan">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="widget widget-stats bg-orange">
+                <div class="stats-icon"><i class="glyphicon glyphicon-remove"></i></div>
+                <div class="stats-info">
+                    <h4>Cancelled Loan</h4>
+                    <p>@ViewBag.cancelledloan</p>
+                </div>
+                <div class="stats-link">
+                    <a href="/loan/cancelledloan">View Detail <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

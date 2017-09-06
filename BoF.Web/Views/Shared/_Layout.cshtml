@@ -1,0 +1,78 @@
+﻿@*@{
+        //Layout = null;
+        Layout = "~/Views/Shared/_Sidebar.cshtml";
+    }*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles.css")" rel="stylesheet" type="text/css" />
+
+
+    @*    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Layout.css")" rel="stylesheet" type="text/css" />*@
+
+
+    <link href="@Url.Content("~/Content/font-awesome.css")" rel="stylesheet" type="text/css">
+    <script src="@Url.Content("~/Scripts/jquery-1.11.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/bootstrap.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/custom.js")" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var spinnerVisible = false;
+        function showProgress() {
+            if (!spinnerVisible) {
+                $("div#spinner").fadeIn("fast");
+                spinnerVisible = true;
+            }
+        };
+        function hideProgress() {
+            if (spinnerVisible) {
+                var spinner = $("div#spinner");
+                spinner.stop();
+                spinner.fadeOut("fast");
+                spinnerVisible = false;
+            }
+        };
+    </script>
+    <style>
+        div#spinner {
+            display: none;
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background: url('../../Content/loading.gif') no-repeat center #fff;
+            text-align: center;
+            padding: 10px;
+            font: normal 16px Tahoma, Geneva, sans-serif;
+            border: 1px solid #666;
+            margin-left: -50px;
+            margin-top: -50px;
+            z-index: 2;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

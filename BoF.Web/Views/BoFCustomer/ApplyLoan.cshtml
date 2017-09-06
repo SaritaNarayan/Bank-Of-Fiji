@@ -1,0 +1,290 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<html lang="en">
+<head>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/form-elements.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="~/assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/assets/ico/apple-touch-icon-57-precomposed.png">
+    <!-- Javascript -->
+    <script src="~/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/jquery.backstretch.min.js"></script>
+    <script src="~/assets/js/retina-1.1.0.min.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+    <script src="assets/js/placeholder.js"></script>
+    <style>
+        .col2 * {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top content -->
+    <div class="top-content">
+        @Html.Action("ShowMyPartialView");
+        <div class="container">
+
+            <div class="row" style="margin-left:18%; margin-top:-3%">
+                <div class="form-box">
+                    <form role="form" action="" method="post" class="f1">
+                        <h3 class="text-justify">Loan Application</h3>
+                        <p>Fill in the form to get our loan offers at one click</p>
+                        <div class="f1-steps">
+                            <div class="f1-progress">
+                                <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
+                            </div>
+                            <div class="f1-step active">
+                                <div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                                <p>Details </p>
+                            </div>
+                            <div class="f1-step">
+                                <div class="f1-step-icon"><i class="fa fa-sticky-note"></i></div>
+                                <p>Witness Details</p>
+                            </div>
+
+                            <div class="f1-step">
+                                <div class="f1-step-icon"><i class="fa fa-check"></i></div>
+                                <p>Term &amp; Conditions</p>
+                            </div>
+                        </div>
+
+                        <fieldset>
+                            <h4>The application will be considered based on our loan description. Please specify your loan need here: </h4>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f4">Purpose of Loan</label>
+                                        <select class="form-control" style="height:44px" id="loanType" name="f4">
+                                            <option value="1">Car Loan</option>
+                                            <option value="2">Home Loan</option>
+                                            <option value="3">Study Loan</option>
+                                            <option value="4">Finance Loan</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f4">Lodgement Date</label>
+                                        <input type="text" class="form-control " id="f9" name="f9" value="1" data-rule-number="true" />
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" data-fid="f9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f9">Request Amount</label>
+                                        <input type="text" class="form-control " id="f9" name="f9" value="" placeholder="$" data-rule-number="true" />
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f11">Request Term</label>
+                                        <input type="text" class="form-control" id="f11" name="f11" value="" placeholder="$" />
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group" data-fid="f9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f12">Description</label>
+                                        <input type="text" class="form-control" id="f12" name="f12" value="" />
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f14">Repayment Frequency</label>
+                                        <select class="form-control" style="height:44px" id="f14" name="f14">
+                                            <option value="- Select -">- Select -</option>
+                                            <option value="1">Weekly</option>
+                                            <option value="2">Monthly</option>
+                                            <option value="3">Yearly</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="f1-buttons">
+                                <button type="button" class="btn btn-next">Next</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <h4 class="text-justify">Upon consideration we will get in touch with the witness to contnue with your application, All relevent information of witness is required to Manager to prepae the loan deed.</h4>
+                            <div class="form-group f16 " data-fid="f16">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f12">Witness First Name</label>
+                                        <input type="text" class="form-control" id="f16" name="f16" value="" />
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f12">Witness Last Name</label>
+                                        <input type="text" class="form-control" id="f16b" name="f16b" value="" />
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="form-group f19 " data-fid="f19">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f12">Mobile Contact</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon left"><i class="glyphicon glyphicon-earphone"></i> </span>
+                                            <input type="text" class="form-control " id="f19" name="f19" value="" data-rule-number="true" />
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f12">Office Contact</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon left"><i class="glyphicon glyphicon-lock"></i> </span>
+                                            <input type="text" class="form-control " id="f19" name="f19" value="" data-rule-number="true" />
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="form-group " data-fid="f17">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f17">Witness Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon left"><i class="glyphicon glyphicon-home"></i> </span>
+                                            <input type="text" class="form-control" id="f17" name="f17" value="" />
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="control-label" for="f12">Post Code</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon left"><i class="glyphicon glyphicon-map-marker"></i> </span>
+                                            <input type="text" class="form-control " id="f19" name="f19" value="" data-rule-number="true" />
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="input-group">
+
+                                </div>
+
+
+                            </div>
+                            <p class="text-justify">Submit certified documents to support your application. we require addition documents to support and process your application</p>
+
+                            <div class="form-group f21 " data-fid="f21">
+                                <label class="control-label" for="f21">Upload File</label>
+
+                                <input type="file" class="form-control" id="f21" name="f21" value="" data-showUpload="false" data-showZoom="false" />
+
+                            </div>
+
+                            <div class="f1-buttons">
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="button" class="btn btn-next">Next</button>
+                            </div>
+                        </fieldset>
+
+
+
+                        <fieldset>
+                            <p class="text-justify">These Terms and Conditions pertain solely to the offer extended by BOF Bank on any loan availed by a customer for the period specified below (“Offer”). It shall stand terminated thereafter.</p>
+                            <ol type="i">
+                                <li>Customer who is availing the Offer shall be eligible to a discount of $ 50 on processing fee, subject to a minimum processing fee of $ 999 exclusive of service tax payable.</li>
+                                <li>The Offer is valid only till 20th March 2018.</li>
+                                <li>The time period required for the processing of the application submitted by the customer for the disbursement of the loan availed under the Offer shall be subject to the applicant's eligibility as per BOF Bank's policy and applicant providing the relevant documents in time.</li>
+                                <li>Nothing contained herein shall constitute or be deemed to constitute an advice, invitation or solicitation to purchase any products/ services of BOF Bank / third party. "BOF Bank" and "I-man" logos are trademark and property of BOF Bank Ltd. Misuse of any intellectual property, or any other content displayed herein is strictly prohibited.</li>
+                                <li>These Terms and Conditions are to be read in conjunction with the BOF Bank Limited’s (All-FIJI) Standard Terms And Conditions Governing Unsecured Loans (Regular & Pre-Qualified Loans) available on www.bof.com/policies</li>
+                            </ol>
+                            <p>For further details,<a href="www.bof.com/policies">www.bof.com/policies</a> please visit </p>
+
+
+                            <div class="f1-buttons">
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="submit" id="btnSubmit" class="btn btn-submit">Submit</button>
+                            </div>
+                        </fieldset>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--[if lt IE 10]>
+
+    <![endif]-->
+    <script>
+    $(document).ready(function () {
+        $('#btnSubmit').on('click', function () {
+            var data = new FormData();
+            var files = $("#f21").get(0).files;
+            // Add the uploaded image content to the form data collection
+            if (files.length > 0) {
+                data.append("UploadedImage", files[0]);
+            }
+            // Make Ajax request with the contentType = false, and procesDate = false
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: "BoFCustomer/ApplyLoan",
+                contentType: false,
+                processData: false,
+                data: data
+            });
+
+            ajaxRequest.done(function (xhr, textStatus) {
+                // Do other operation
+            });
+        });
+    });
+    </script>
+</body>
+</html>
