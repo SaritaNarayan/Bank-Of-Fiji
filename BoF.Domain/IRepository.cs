@@ -11,6 +11,7 @@ namespace BoF.Domain.Repository
 
         /// <summary>
         /// Begins the transaction.
+        /// 
         /// </summary>
         void BeginTransaction();
 
